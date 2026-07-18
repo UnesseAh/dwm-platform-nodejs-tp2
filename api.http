@@ -1,0 +1,45 @@
+### 1. Lister tous les livres (Public)
+GET http://localhost:3000/livres
+
+### 2. Obtenir le livre 1 (Public)
+GET http://localhost:3000/livres/1
+
+### 3. Ajouter un livre SANS CLÉ (Doit retourner 401)
+POST http://localhost:3000/livres
+Content-Type: application/json
+
+{
+  "titre": "Les Misérables",
+  "auteur": "Victor Hugo",
+  "annee": 1862
+}
+
+### 4. Ajouter un livre AVEC CLÉ (Doit retourner 201)
+POST http://localhost:3000/livres
+Content-Type: application/json
+X-Api-Key: monSecretDev123
+
+{
+  "titre": "Les Misérables",
+  "auteur": "Victor Hugo",
+  "annee": 1862
+}
+
+### 5. Modifier le livre 1 AVEC CLÉ (Doit retourner 200)
+PUT http://localhost:3000/livres/1
+Content-Type: application/json
+X-Api-Key: monSecretDev123
+
+{
+  "titre": "Le Petit Prince Modifications",
+  "auteur": "Antoine de Saint-Exupéry",
+  "annee": 1943,
+  "disponible": false
+}
+
+### 6. Supprimer le livre 2 AVEC CLÉ (Doit retourner 204)
+DELETE http://localhost:3000/livres/2
+X-Api-Key: monSecretDev123
+
+### 7. Obtenir un livre inexistant (Doit retourner 404)
+GET http://localhost:3000/livres/999

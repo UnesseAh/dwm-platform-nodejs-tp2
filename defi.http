@@ -1,0 +1,42 @@
+### 1. Obtenir tous les auteurs
+GET http://localhost:3050/auteurs
+
+### 2. Créer un nouvel auteur
+POST http://localhost:3050/auteurs
+Content-Type: application/json
+
+{
+  "nom": "Albert Camus"
+}
+
+### 3. Obtenir l'auteur 3 créé
+GET http://localhost:3050/auteurs/3
+
+### 4. Tenter d'ajouter un livre avec un Auteur ID invalide (Doit retourner 409)
+POST http://localhost:3050/livres
+Content-Type: application/json
+
+{
+  "titre": "L'Étranger",
+  "auteurId": 99,
+  "annee": 1942
+}
+
+### 5. Ajouter un livre avec un Auteur ID valide (Doit retourner 201)
+POST http://localhost:3050/livres
+Content-Type: application/json
+
+{
+  "titre": "L'Étranger",
+  "auteurId": 3,
+  "annee": 1942
+}
+
+### 6. Obtenir tous les livres (Doit inclure le nom de l'auteur)
+GET http://localhost:3050/livres
+
+### 7. Obtenir les livres d'un auteur spécifique (Auteur 3)
+GET http://localhost:3050/auteurs/3/livres
+
+### 8. Tester le Bonus : Pagination de livres (Page 1, Limite 1)
+GET http://localhost:3050/livres?page=1&limit=1
